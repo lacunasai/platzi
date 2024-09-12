@@ -6,26 +6,63 @@
     <title>Casa Musical</title>
     <style>
         body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
+            background-color: #1e1e1e;
+            color: white;
             line-height: 1.6;
         }
         header {
-            background-color: #fff;
-            color: #333;
-            padding: 30px 0;
+            background-color: #000;
+            color: white;
+            padding: 20px;
             text-align: center;
-            border-bottom: 1px solid #ddd;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
         header h1 {
-            font-size: 2.5rem;
+            font-family: 'Helvetica Neue', sans-serif;
+            font-size: 3rem;
             font-weight: 300;
-            letter-spacing: 2px;
-            text-transform: uppercase;
             margin: 0;
+            text-transform: uppercase;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #111;
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 15px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #f00; /* Color rojo Fender */
+        }
+        .banner {
+            background-image: url('https://www.fender.com/images/guitars.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .banner h2 {
+            font-size: 4rem;
+            color: white;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
         }
         .product-section {
             display: grid;
@@ -36,12 +73,12 @@
             margin: auto;
         }
         .product {
-            background-color: #fff;
+            background-color: #222;
             border: none;
             padding: 15px;
             text-align: center;
             transition: transform 0.3s ease;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
         }
         .product:hover {
             transform: translateY(-10px);
@@ -49,21 +86,21 @@
         .product img {
             width: 100%;
             height: auto;
-            border-bottom: 1px solid #ddd;
+            border-bottom: 2px solid #f00; /* Rojo Fender */
         }
         .product h3 {
-            font-size: 1.25rem;
+            font-size: 1.5rem;
             margin: 15px 0;
             font-weight: 400;
         }
         .product p {
             font-size: 1.1rem;
-            color: #777;
+            color: #bbb;
             margin-bottom: 10px;
         }
         .buy-btn {
             display: inline-block;
-            background-color: #333;
+            background-color: #f00;
             color: white;
             padding: 12px 25px;
             text-decoration: none;
@@ -74,10 +111,10 @@
             transition: background-color 0.3s ease;
         }
         .buy-btn:hover {
-            background-color: #555;
+            background-color: #d00;
         }
         footer {
-            background-color: #333;
+            background-color: #000;
             color: white;
             text-align: center;
             padding: 20px 0;
@@ -95,9 +132,21 @@
     <h1>Casa Musical</h1>
 </header>
 
-<section class="product-section">
+<nav>
+    <a href="#guitarras">Guitarras</a>
+    <a href="#bajos">Bajos</a>
+    <a href="#amplificadores">Amplificadores</a>
+    <a href="#accesorios">Accesorios</a>
+    <a href="#contacto">Contacto</a>
+</nav>
+
+<section class="banner">
+    <h2>Descubre el Sonido Perfecto</h2>
+</section>
+
+<section class="product-section" id="guitarras">
     <div class="product">
-        <img src="https://i.imgur.com/AC1iyQ7.jpeg" alt="Guitarra Eléctrica">
+        <img src="https://via.placeholder.com/250x300" alt="Guitarra Acústica">
         <h3>Guitarra Acústica</h3>
         <p>$499.99</p>
         <a href="#" class="buy-btn" id="buy-btn-1">Comprar ahora</a>
@@ -109,7 +158,7 @@
         <a href="#" class="buy-btn" id="buy-btn-2">Comprar ahora</a>
     </div>
     <div class="product">
-        <img src="https://i.imgur.com/DW4xNlr.jpeg" alt="Batería Completa">
+        <img src="https://via.placeholder.com/250x300" alt="Batería Completa">
         <h3>Batería Completa</h3>
         <p>$799.99</p>
         <a href="#" class="buy-btn" id="buy-btn-3">Comprar ahora</a>
