@@ -8,6 +8,10 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
         
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Poppins', sans-serif;
         }
@@ -96,17 +100,17 @@
             <h1 class="text-2xl md:text-3xl font-bold">CarRent</h1>
             <nav>
                 <ul class="flex space-x-6">
-                    <li><a href="#" class="nav-link hover:text-blue-200">Home</a></li>
-                    <li><a href="#" class="nav-link hover:text-blue-200">Cars</a></li>
-                    <li><a href="#" class="nav-link hover:text-blue-200">About</a></li>
-                    <li><a href="#" class="nav-link hover:text-blue-200">Contact</a></li>
+                    <li><a href="#home" class="nav-link hover:text-blue-200">Home</a></li>
+                    <li><a href="#cars" class="nav-link hover:text-blue-200">Cars</a></li>
+                    <li><a href="#about" class="nav-link hover:text-blue-200">About</a></li>
+                    <li><a href="#contact" class="nav-link hover:text-blue-200">Contact</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <main class="pt-20">
-        <section class="hero-bg text-white py-32 mb-16">
+        <section id="home" class="hero-bg text-white py-32 mb-16">
             <div class="container mx-auto text-center px-4">
                 <h2 class="text-4xl md:text-6xl font-bold mb-4 fade-in-up" style="animation-delay: 0.2s;">Rent Your Dream Car Today</h2>
                 <p class="text-xl md:text-2xl mb-8 fade-in-up" style="animation-delay: 0.4s;">Experience luxury and performance on your terms</p>
@@ -114,7 +118,7 @@
             </div>
         </section>
 
-        <section class="container mx-auto px-4 mb-16">
+        <section id="cars" class="container mx-auto px-4 mb-16">
             <h3 class="text-3xl font-bold text-center mb-12">Featured Vehicles</h3>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="card bg-white rounded-lg shadow-lg overflow-hidden">
@@ -144,7 +148,7 @@
             </div>
         </section>
 
-        <section class="bg-gradient-to-r from-blue-500 to-purple-500 text-white py-16">
+        <section id="about" class="bg-gradient-to-r from-blue-500 to-purple-500 text-white py-16">
             <div class="container mx-auto px-4">
                 <h3 class="text-3xl font-bold text-center mb-8">Why Choose Us?</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -171,6 +175,14 @@
                 </div>
             </div>
         </section>
+
+        <section id="contact" class="container mx-auto px-4 py-16">
+            <h3 class="text-3xl font-bold text-center mb-8">Contact Us</h3>
+            <p class="text-center mb-8">Have questions? Reach out to us!</p>
+            <div class="max-w-md mx-auto">
+                <button class="bg-blue-600 text-white w-full px-4 py-2 rounded-full hover:bg-blue-700 transition">Get in Touch</button>
+            </div>
+        </section>
     </main>
 
     <footer class="bg-gray-800 text-white py-8">
@@ -180,6 +192,27 @@
     </footer>
 
     <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+
+                if (targetElement) {
+                    const headerOffset = 80; // Adjust this value based on your header height
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
         // Fade in elements on scroll
         const fadeElements = document.querySelectorAll('.card, .rent-button');
         const observer = new IntersectionObserver((entries) => {
