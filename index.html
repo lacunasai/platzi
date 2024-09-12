@@ -1,206 +1,227 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Casa Musical</title>
+    <title>Ultra Modern Car Rental</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        
         body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #1e1e1e;
-            color: white;
-            line-height: 1.6;
+            font-family: 'Poppins', sans-serif;
         }
-        header {
-            background-color: #000;
-            color: white;
-            padding: 20px;
-            text-align: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        header h1 {
-            font-family: 'Helvetica Neue', sans-serif;
-            font-size: 3rem;
-            font-weight: 300;
-            margin: 0;
-            text-transform: uppercase;
-        }
-        nav {
-            display: flex;
-            justify-content: center;
-            background-color: #111;
-            padding: 10px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            padding: 15px 20px;
-            font-size: 1rem;
-            font-weight: bold;
-            letter-spacing: 1px;
-            transition: color 0.3s;
-        }
-        nav a:hover {
-            color: #f00; /* Color rojo Fender */
-        }
-        .banner {
-            background-image: url('https://www.fender.com/images/guitars.jpg');
+
+        .hero-bg {
+            background-image: url('/api/placeholder/1600/900');
             background-size: cover;
             background-position: center;
-            height: 60vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
-        .banner h2 {
-            font-size: 4rem;
-            color: white;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .product-section {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            padding: 50px;
-            max-width: 1200px;
-            margin: auto;
-        }
-        .product {
-            background-color: #222;
-            border: none;
-            padding: 15px;
-            text-align: center;
-            transition: transform 0.3s ease;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-        }
-        .product:hover {
+
+        .card:hover {
             transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
-        .product img {
+
+        .rent-button {
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .rent-button:hover {
+            transform: scale(1.05);
+        }
+
+        .rent-button::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300px;
+            height: 300px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            transition: transform 0.5s ease-out;
+        }
+
+        .rent-button:hover::after {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .nav-link {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
             width: 100%;
-            height: auto;
-            border-bottom: 2px solid #f00; /* Rojo Fender */
+            height: 2px;
+            background-color: currentColor;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
         }
-        .product h3 {
-            font-size: 1.5rem;
-            margin: 15px 0;
-            font-weight: 400;
-        }
-        .product p {
-            font-size: 1.1rem;
-            color: #bbb;
-            margin-bottom: 10px;
-        }
-        .buy-btn {
-            display: inline-block;
-            background-color: #f00;
-            color: white;
-            padding: 12px 25px;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            border-radius: 25px;
-            transition: background-color 0.3s ease;
-        }
-        .buy-btn:hover {
-            background-color: #d00;
-        }
-        footer {
-            background-color: #000;
-            color: white;
-            text-align: center;
-            padding: 20px 0;
-            margin-top: 50px;
-        }
-        footer p {
-            font-size: 0.9rem;
-            letter-spacing: 1px;
+
+        .nav-link:hover::after {
+            transform: scaleX(1);
         }
     </style>
 </head>
-<body>
+<body class="bg-gray-100">
+    <header class="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-4 md:p-6 fixed w-full z-10">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl md:text-3xl font-bold">CarRent</h1>
+            <nav>
+                <ul class="flex space-x-6">
+                    <li><a href="#" class="nav-link hover:text-blue-200">Home</a></li>
+                    <li><a href="#" class="nav-link hover:text-blue-200">Cars</a></li>
+                    <li><a href="#" class="nav-link hover:text-blue-200">About</a></li>
+                    <li><a href="#" class="nav-link hover:text-blue-200">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-<header>
-    <h1>Casa Musical</h1>
-</header>
+    <main class="pt-20">
+        <section class="hero-bg text-white py-32 mb-16">
+            <div class="container mx-auto text-center px-4">
+                <h2 class="text-4xl md:text-6xl font-bold mb-4 fade-in-up" style="animation-delay: 0.2s;">Rent Your Dream Car Today</h2>
+                <p class="text-xl md:text-2xl mb-8 fade-in-up" style="animation-delay: 0.4s;">Experience luxury and performance on your terms</p>
+                <button class="bg-white text-blue-600 px-8 py-3 rounded-full text-lg font-semibold hover:bg-blue-100 transition duration-300 fade-in-up" style="animation-delay: 0.6s;">Explore Our Fleet</button>
+            </div>
+        </section>
 
-<nav>
-    <a href="#guitarras">Guitarras</a>
-    <a href="#bajos">Bajos</a>
-    <a href="#amplificadores">Amplificadores</a>
-    <a href="#accesorios">Accesorios</a>
-    <a href="#contacto">Contacto</a>
-</nav>
+        <section class="container mx-auto px-4 mb-16">
+            <h3 class="text-3xl font-bold text-center mb-12">Featured Vehicles</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="/api/placeholder/400/300" alt="Luxury Sedan" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h4 class="text-xl font-semibold mb-2">Luxury Sedan</h4>
+                        <p class="text-gray-600 mb-4">Experience unparalleled comfort and style.</p>
+                        <button class="rent-button relative bg-blue-600 text-white w-full px-4 py-2 rounded-full overflow-hidden">Rent Now</button>
+                    </div>
+                </div>
+                <div class="card bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="/api/placeholder/400/300" alt="Sports Car" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h4 class="text-xl font-semibold mb-2">Sports Car</h4>
+                        <p class="text-gray-600 mb-4">Feel the thrill of pure performance.</p>
+                        <button class="rent-button relative bg-blue-600 text-white w-full px-4 py-2 rounded-full overflow-hidden">Rent Now</button>
+                    </div>
+                </div>
+                <div class="card bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="/api/placeholder/400/300" alt="SUV" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h4 class="text-xl font-semibold mb-2">Spacious SUV</h4>
+                        <p class="text-gray-600 mb-4">Perfect for family trips or adventures.</p>
+                        <button class="rent-button relative bg-blue-600 text-white w-full px-4 py-2 rounded-full overflow-hidden">Rent Now</button>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<section class="banner">
-    <h2>Descubre el Sonido Perfecto</h2>
-</section>
+        <section class="bg-gradient-to-r from-blue-500 to-purple-500 text-white py-16">
+            <div class="container mx-auto px-4">
+                <h3 class="text-3xl font-bold text-center mb-8">Why Choose Us?</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="text-center">
+                        <div class="text-4xl mb-4">🚗</div>
+                        <h4 class="text-xl font-semibold mb-2">Premium Vehicles</h4>
+                        <p>Top-tier cars for every occasion</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl mb-4">💰</div>
+                        <h4 class="text-xl font-semibold mb-2">Best Prices</h4>
+                        <p>Competitive rates for luxury rentals</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl mb-4">🔧</div>
+                        <h4 class="text-xl font-semibold mb-2">24/7 Support</h4>
+                        <p>Always here when you need us</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl mb-4">📍</div>
+                        <h4 class="text-xl font-semibold mb-2">Convenient Locations</h4>
+                        <p>Easy pickup and drop-off</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
-<section class="product-section" id="guitarras">
-    <div class="product">
-        <img src="https://via.placeholder.com/250x300" alt="Guitarra Acústica">
-        <h3>Guitarra Acústica</h3>
-        <p>$499.99</p>
-        <a href="#" class="buy-btn" id="buy-btn-1">Comprar ahora</a>
-    </div>
-    <div class="product">
-        <img src="https://via.placeholder.com/250x300" alt="Teclado Eléctrico">
-        <h3>Teclado Eléctrico</h3>
-        <p>$299.99</p>
-        <a href="#" class="buy-btn" id="buy-btn-2">Comprar ahora</a>
-    </div>
-    <div class="product">
-        <img src="https://via.placeholder.com/250x300" alt="Batería Completa">
-        <h3>Batería Completa</h3>
-        <p>$799.99</p>
-        <a href="#" class="buy-btn" id="buy-btn-3">Comprar ahora</a>
-    </div>
-    <div class="product">
-        <img src="https://via.placeholder.com/250x300" alt="Violín Clásico">
-        <h3>Violín Clásico</h3>
-        <p>$199.99</p>
-        <a href="#" class="buy-btn" id="buy-btn-4">Comprar ahora</a>
-    </div>
-    <div class="product">
-        <img src="https://via.placeholder.com/250x300" alt="Amplificador de Guitarra">
-        <h3>Amplificador de Guitarra</h3>
-        <p>$129.99</p>
-        <a href="#" class="buy-btn" id="buy-btn-5">Comprar ahora</a>
-    </div>
-</section>
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2024 CarRent. All rights reserved.</p>
+        </div>
+    </footer>
 
-<footer>
-    <p>&copy; 2024 Casa Musical. Todos los derechos reservados.</p>
-</footer>
+    <script>
+        // Fade in elements on scroll
+        const fadeElements = document.querySelectorAll('.card, .rent-button');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
 
-<script>
-    // Cambia aquí el número de WhatsApp y el mensaje personalizado
-    const numeroWhatsApp = "1234567890"; // Sin el signo "+"
-    const mensajePredeterminado = "Hola, me interesa comprar";
+        fadeElements.forEach(element => {
+            observer.observe(element);
+        });
 
-    // Productos
-    const productos = [
-        { nombre: "Guitarra Acústica", id: "buy-btn-1" },
-        { nombre: "Teclado Eléctrico", id: "buy-btn-2" },
-        { nombre: "Batería Completa", id: "buy-btn-3" },
-        { nombre: "Violín Clásico", id: "buy-btn-4" },
-        { nombre: "Amplificador de Guitarra", id: "buy-btn-5" },
-    ];
+        // Rent button click effect
+        document.querySelectorAll('.rent-button').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const rect = button.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const ripple = document.createElement('span');
+                ripple.style.position = 'absolute';
+                ripple.style.backgroundColor = 'rgba(255, 255, 255, 0.7)';
+                ripple.style.borderRadius = '50%';
+                ripple.style.width = '100px';
+                ripple.style.height = '100px';
+                ripple.style.left = `${x - 50}px`;
+                ripple.style.top = `${y - 50}px`;
+                ripple.style.transform = 'scale(0)';
+                ripple.style.animation = 'ripple 0.6s linear';
 
-    // Generar enlaces de WhatsApp para cada producto
-    productos.forEach(producto => {
-        const enlace = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(`${mensajePredeterminado} ${producto.nombre} de Casa Musical. ¿Me puedes dar más información?`)}`;
-        document.getElementById(producto.id).href = enlace;
-    });
-</script>
+                button.appendChild(ripple);
 
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+
+                alert('Thank you for your interest! Our booking system is coming soon.');
+            });
+        });
+    </script>
 </body>
 </html>
