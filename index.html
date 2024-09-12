@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fashion Store</title>
+    <title>Casa Musical</title>
     <style>
         body {
             font-family: 'Helvetica Neue', Arial, sans-serif;
@@ -92,44 +92,44 @@
 <body>
 
 <header>
-    <h1>Fashion Store</h1>
+    <h1>Casa Musical</h1>
 </header>
 
 <section class="product-section">
     <div class="product">
-        <img src="https://via.placeholder.com/250x300" alt="Producto 1">
-        <h3>Producto 1</h3>
-        <p>$29.99</p>
+        <img src="https://via.placeholder.com/250x300" alt="Guitarra Acústica">
+        <h3>Guitarra Acústica</h3>
+        <p>$499.99</p>
         <a href="#" class="buy-btn" id="buy-btn-1">Comprar ahora</a>
     </div>
     <div class="product">
-        <img src="https://via.placeholder.com/250x300" alt="Producto 2">
-        <h3>Producto 2</h3>
-        <p>$39.99</p>
+        <img src="https://via.placeholder.com/250x300" alt="Teclado Eléctrico">
+        <h3>Teclado Eléctrico</h3>
+        <p>$299.99</p>
         <a href="#" class="buy-btn" id="buy-btn-2">Comprar ahora</a>
     </div>
     <div class="product">
-        <img src="https://via.placeholder.com/250x300" alt="Producto 3">
-        <h3>Producto 3</h3>
-        <p>$49.99</p>
+        <img src="https://via.placeholder.com/250x300" alt="Batería Completa">
+        <h3>Batería Completa</h3>
+        <p>$799.99</p>
         <a href="#" class="buy-btn" id="buy-btn-3">Comprar ahora</a>
     </div>
     <div class="product">
-        <img src="https://via.placeholder.com/250x300" alt="Producto 4">
-        <h3>Producto 4</h3>
-        <p>$59.99</p>
+        <img src="https://via.placeholder.com/250x300" alt="Violín Clásico">
+        <h3>Violín Clásico</h3>
+        <p>$199.99</p>
         <a href="#" class="buy-btn" id="buy-btn-4">Comprar ahora</a>
     </div>
     <div class="product">
-        <img src="https://via.placeholder.com/250x300" alt="Producto 5">
-        <h3>Producto 5</h3>
-        <p>$69.99</p>
+        <img src="https://via.placeholder.com/250x300" alt="Amplificador de Guitarra">
+        <h3>Amplificador de Guitarra</h3>
+        <p>$129.99</p>
         <a href="#" class="buy-btn" id="buy-btn-5">Comprar ahora</a>
     </div>
 </section>
 
 <footer>
-    <p>&copy; 2024 Fashion Store. Todos los derechos reservados.</p>
+    <p>&copy; 2024 Casa Musical. Todos los derechos reservados.</p>
 </footer>
 
 <script>
@@ -139,16 +139,16 @@
 
     // Productos
     const productos = [
-        { nombre: "Producto 1", id: "buy-btn-1" },
-        { nombre: "Producto 2", id: "buy-btn-2" },
-        { nombre: "Producto 3", id: "buy-btn-3" },
-        { nombre: "Producto 4", id: "buy-btn-4" },
-        { nombre: "Producto 5", id: "buy-btn-5" },
+        { nombre: "Guitarra Acústica", id: "buy-btn-1" },
+        { nombre: "Teclado Eléctrico", id: "buy-btn-2" },
+        { nombre: "Batería Completa", id: "buy-btn-3" },
+        { nombre: "Violín Clásico", id: "buy-btn-4" },
+        { nombre: "Amplificador de Guitarra", id: "buy-btn-5" },
     ];
 
     // Generar enlaces de WhatsApp para cada producto
     productos.forEach(producto => {
-        const enlace = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(`${mensajePredeterminado} ${producto.nombre} de Fashion Store. ¿Me puedes dar más información?`)}`;
+        const enlace = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(`${mensajePredeterminado} ${producto.nombre} de Casa Musical. ¿Me puedes dar más información?`)}`;
         document.getElementById(producto.id).href = enlace;
     });
 </script>
